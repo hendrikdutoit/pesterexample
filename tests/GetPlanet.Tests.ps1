@@ -1,5 +1,5 @@
 BeforeAll {
-    . $PSScriptRoot/Get-Planet.ps1
+    . $PSScriptRoot/../src/Get-Planet.ps1
 }
 
 Describe 'Get-Planet' {
