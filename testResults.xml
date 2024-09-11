@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-09-11" time="23:27:45">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="4" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-09-12" time="00:55:56">
   <environment clr-version="4.0.30319.42000" user-domain="EDDIE" cwd="D:\Dropbox\Projects\HdT\PesterExample" platform="Microsoft Windows 10 Pro|C:\WINDOWS|\Device\Harddisk2\Partition3" machine-name="EDDIE" nunit-version="2.5.8.0" os-version="10.0.19045" user="hendr" />
   <culture-info current-culture="en-ZA" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="0.2115" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="0.2225" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\GetEmoji.Tests.ps1" executed="True" result="Success" success="True" time="0.0951" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\GetEmoji.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\GetEmoji.Tests.ps1" executed="True" result="Success" success="True" time="0.1061" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\GetEmoji.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="GetEmoji" executed="True" result="Success" success="True" time="0.0238" asserts="0" description="GetEmoji">
+          <test-suite type="TestFixture" name="GetEmoji" executed="True" result="Success" success="True" time="0.0248" asserts="0" description="GetEmoji">
             <results>
-              <test-suite type="TestFixture" name="GetEmoji.Lookup by whole name" executed="True" result="Success" success="True" time="0.0193" asserts="0" description="GetEmoji.Lookup by whole name">
+              <test-suite type="TestFixture" name="GetEmoji.Lookup by whole name" executed="True" result="Success" success="True" time="0.0146" asserts="0" description="GetEmoji.Lookup by whole name">
                 <results>
-                  <test-case description="Returns (cactus)" name="GetEmoji.Lookup by whole name.Returns (cactus)" time="0.011" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="Returns  (pencil)" name="GetEmoji.Lookup by whole name.Returns  (pencil)" time="0.0035" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns (cactus)" name="GetEmoji.Lookup by whole name.Returns (cactus)" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Returns  (pencil)" name="GetEmoji.Lookup by whole name.Returns  (pencil)" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
                 </results>
               </test-suite>
             </results>
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\GetPlanet.Tests.ps1" executed="True" result="Failure" success="False" time="0.0587" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\GetPlanet.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\GetPlanet.Tests.ps1" executed="True" result="Failure" success="False" time="0.0578" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\GetPlanet.Tests.ps1">
         <results>
           <test-suite type="TestFixture" name="Get-Planet" executed="True" result="Failure" success="False" time="0" asserts="0" description="Get-Planet">
             <results>
@@ -32,7 +32,7 @@
           </test-suite>
         </results>
       </test-suite>
-      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1" executed="True" result="Failure" success="False" time="0.0577" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1" executed="True" result="Failure" success="False" time="0.0585" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1">
         <results>
           <test-suite type="TestFixture" name="Get-Planet" executed="True" result="Failure" success="False" time="0" asserts="0" description="Get-Planet">
             <results>
