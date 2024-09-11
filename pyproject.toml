@@ -1,0 +1,54 @@
+[build-system]
+    requires = [
+        "poetry-core>=1.0.0",
+    ]
+    build-backend = "poetry.core.masonry.api"
+
+[tool.codespell]
+    count = ''
+    quiet-level = 2
+    skip = 'documentation/Archive/*'
+    ignore-words-list = 'AfterAll'
+
+[tool.poetry]
+    name = 'PesterExample'
+    version = '0.0.0'
+    description = 'Exploring Pester principles in PowerShell.'
+    authors = [
+        "Hendrik du Toit <hendrik@brightedge.co.za>",
+    ]
+    license = "file:LICENSE"
+    readme = "README.md"
+    classifiers = [
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development',
+        'Topic :: Software Development :: Version Control',
+        'Topic :: Software Development :: Version Control :: Git',
+        'Topic :: Utilities',
+        'Programming Language :: Python :: 3.12',
+        'License :: OSI Approved :: MIT License',
+    ]
+    # documentation = "https://readthedocs.org"
+    homepage = 'https://github.com/hendrikdutoit/PesterExample'
+    repository = "https://github.com/hendrikdutoit/PesterExample.git"
+
+[tool.poetry.dependencies]
+    python = "^3.12.2"
+    # pydantic-settings = "^2.4.0"
+    # mysql-connector-python = "^9.0.0"
+    # pydantic = "^2.8.2"
+    # sqlalchemy = "==1.4.52"
+
+[tool.poetry.group.dev.dependencies]
+    mdformat-gfm = "^0.3.6"
+    mdformat-frontmatter = "^2.0.8"
+    mdformat-footnote = "^0.1.1"
+    rstcheck = "^6.2.4"
+    black = "^24.8.0"
+    flake8 = "^7.1.1"
+    pre-commit = "^3.8.0"
+
+[tool.poetry.urls]
+    issues = "https://github.com/hendrikdutoit/PesterExample/issues"
+    changelog = 'https://github.com/hendrikdutoit/PesterExample/blob/enhancement/master/ReleaseNotes.md'
