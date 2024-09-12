@@ -12,7 +12,7 @@
 
 [tool.poetry]
     name = 'PesterExample'
-    version = '0.0.0'
+    version = '0.0.1'
     description = 'Exploring Pester principles in PowerShell.'
     authors = [
         "Hendrik du Toit <hendrik@brightedge.co.za>",
