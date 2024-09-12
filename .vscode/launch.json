@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "name": "MyScript V1P1",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": ".\\src\\MyScript.ps1",
+      "args": [
+        "Var1Pos1"
+      ]
+    },
+    {
+      "name": "MyScript -Help",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": ".\\src\\MyScript.ps1",
+      "args": [
+        "-Help"
+      ]
+    }
+  ]
+}

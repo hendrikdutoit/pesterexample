@@ -20,7 +20,6 @@ repos:
       - id: mdformat
         args: [ --end-of-line, lf, ReleaseNotes.md, README.md ]
         additional_dependencies:
-          - mdformat-black
           - mdformat-gfm
           - mdformat_frontmatter
 

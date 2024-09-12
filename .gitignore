@@ -1,0 +1,27 @@
+.coverage
+.env
+.git/
+.idea/
+.pytest_cache/
+.run/
+# .vscode/
+_build/
+*.code-workspace
+*.db
+*.egg-info/
+*.sqlite
+*-workspace
+**/*.egg-info/
+**/__pycache__/
+**/Archive/
+**/desktop.ini
+**/*.py.isorted
+**/VersionArchive/
+build/
+dist/
+docs/build/
+docs/_build/
+docs/source/generated/
+htmlcov/
+tmp/
+
