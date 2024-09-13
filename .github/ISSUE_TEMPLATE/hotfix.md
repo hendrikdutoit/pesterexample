@@ -12,8 +12,6 @@ assignees: ''
 
 ## Minimal Complete Verifiable Example
 
-<!-- See http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports or https://stackoverflow.com/help/mcve for an example -->
-
 ```python
 # Put your MCVE code here
 ```

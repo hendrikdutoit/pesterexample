@@ -18,10 +18,12 @@ _build/
 **/*.py.isorted
 **/VersionArchive/
 build/
+coverage.xml
 dist/
 docs/build/
 docs/_build/
 docs/source/generated/
 htmlcov/
+testResults.xml
 tmp/
 

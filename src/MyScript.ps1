@@ -48,7 +48,6 @@ if (-not $Pester) {
     }
     else {
         Invoke-MyScript -Var01 $Var01
-        # Invoke-MyScript
     }
     Write-Host '-[ END ]------------------------------------------------------------------------' -ForegroundColor Cyan
 }
