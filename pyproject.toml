@@ -35,18 +35,13 @@
 
 [tool.poetry.dependencies]
     python = "^3.12.2"
-    # pydantic-settings = "^2.4.0"
-    # mysql-connector-python = "^9.0.0"
-    # pydantic = "^2.8.2"
-    # sqlalchemy = "==1.4.52"
+
 
 [tool.poetry.group.dev.dependencies]
     mdformat-gfm = "^0.3.6"
     mdformat-frontmatter = "^2.0.8"
     mdformat-footnote = "^0.1.1"
     rstcheck = "^6.2.4"
-    black = "^24.8.0"
-    flake8 = "^7.1.1"
     pre-commit = "^3.8.0"
 
 [tool.poetry.urls]

@@ -16,11 +16,7 @@ assignees: ''
 
 ## List the source code file(s)
 
-<!-- Files and line number where you think the error is (if known) -->
-
 ## Minimal Complete Verifiable Example
-
-<!-- See http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports or https://stackoverflow.com/help/mcve for an example -->
 
 ```python
 # Put your MCVE code here
@@ -34,8 +30,6 @@ assignees: ''
 - VenvIt Version:
 
 ## Branch Name
-
-<!--Will be provided by owner -->
 
 ## Checks
 
