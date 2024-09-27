@@ -42,16 +42,16 @@ Describe "MyScript.ps1 Tests" {
         }
     }
     Context "Function calling" {
-        BeforeAll {
-            . $PSScriptRoot\..\src\MyScript.ps1 -Pester
-        }
+        # BeforeAll {
+        #     . $PSScriptRoot\..\src\MyScript.ps1 -Pester
+        # }
         # BeforeEach {
         #     Mock -CommandName "Invoke-FunctionWithNoParameterswith" -MockWith { Write-Host "Mock: Convert-PyprojectToml called" }
         # }
         Context "Invoke-FunctionWithNoParameters" {
-            BeforeEach {
-                . $PSScriptRoot\..\src\MyScript.ps1 -Var01 "TestValue"
-            }
+            # BeforeEach {
+            #     . $PSScriptRoot\..\src\MyScript.ps1 -Var01 "TestValue"
+            # }
             It "Should call Invoke-FunctionWithNoParameterswith with no parameters" {
                 . $PSScriptRoot\..\src\MyScript.ps1 -Var01 "TestValue"
                 $Result = Invoke-FunctionWithNoParameterswith
