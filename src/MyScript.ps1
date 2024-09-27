@@ -9,6 +9,20 @@
     [Switch]$Pester
 )
 
+function Invoke-FunctionWithNoParameters {
+    Write-Host "Executing function: Invoke-FunctionWithNoParameters"
+}
+
+function Invoke-MyScript {
+    param (
+        [String]$Var
+    )
+    $Result = "Executing function: Invoke-MyScript with Var = $Var..."
+    Write-Host $Result
+    return $Result
+}
+
+
 function Show-Help {
     Write-Host $separator -ForegroundColor Cyan
 
@@ -25,13 +39,6 @@ function Show-Help {
 "@ | Write-Host
 
     Write-Host $separator -ForegroundColor Cyan
-}
-
-function Invoke-MyScript {
-    param (
-        [String]$Var
-    )
-    Write-Host "Executing function: Invoke-MyScript with Var = $Var..."
 }
 
 # Script execution starts here
