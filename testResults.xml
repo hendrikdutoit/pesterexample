@@ -1,42 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="5" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-09-27" time="16:15:24">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="5" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-09-27" time="17:13:23">
   <environment clr-version="4.0.30319.42000" user-domain="THEGUIDE" cwd="D:\Dropbox\Projects\HdT\PesterExample" platform="Microsoft Windows 10 Pro|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="THEGUIDE" nunit-version="2.5.8.0" os-version="10.0.19045" user="hendr" />
   <culture-info current-culture="en-ZA" current-uiculture="en-US" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="14.1836" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="89.4866" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1" executed="True" result="Failure" success="False" time="14.1836" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1">
+      <test-suite type="TestFixture" name="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1" executed="True" result="Failure" success="False" time="89.4866" asserts="0" description="D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="MyScript.ps1 Tests" executed="True" result="Failure" success="False" time="8.5004" asserts="0" description="MyScript.ps1 Tests">
+          <test-suite type="TestFixture" name="MyScript.ps1 Tests" executed="True" result="Failure" success="False" time="50.1285" asserts="0" description="MyScript.ps1 Tests">
             <results>
-              <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution" executed="True" result="Success" success="True" time="7.2299" asserts="0" description="MyScript.ps1 Tests.Top level script execution">
+              <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution" executed="True" result="Success" success="True" time="44.8108" asserts="0" description="MyScript.ps1 Tests.Top level script execution">
                 <results>
-                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed" executed="True" result="Success" success="True" time="6.931" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed">
+                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed" executed="True" result="Success" success="True" time="43.7581" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed">
                     <results>
-                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed.Should call Show-Help function" time="5.8154" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When Help parameter is passed.Should call Show-Help function" time="39.059" asserts="0" success="True" result="Success" executed="True" />
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed" executed="True" result="Success" success="True" time="7.0634" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed">
+                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed" executed="True" result="Success" success="True" time="44.1846" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed">
                     <results>
-                      <test-case description="Should call Invoke-MyScript function with Var01" name="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed.Should call Invoke-MyScript function with Var01" time="0.1009" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should call Invoke-MyScript function with Var01" name="MyScript.ps1 Tests.Top level script execution.When Var01 is passed and Help is not passed.Should call Invoke-MyScript function with Var01" time="0.3693" asserts="0" success="True" result="Success" executed="True" />
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed" executed="True" result="Success" success="True" time="7.1143" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed">
+                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed" executed="True" result="Success" success="True" time="44.3754" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed">
                     <results>
-                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed.Should call Show-Help function" time="0.0383" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When Var01 is an empty string and Help is not passed.Should call Show-Help function" time="0.1299" asserts="0" success="True" result="Success" executed="True" />
                     </results>
                   </test-suite>
-                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When no parameters are passed" executed="True" result="Success" success="True" time="7.202" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When no parameters are passed">
+                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Top level script execution.When no parameters are passed" executed="True" result="Success" success="True" time="44.6259" asserts="0" description="MyScript.ps1 Tests.Top level script execution.When no parameters are passed">
                     <results>
-                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When no parameters are passed.Should call Show-Help function" time="0.0667" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="Should call Show-Help function" name="MyScript.ps1 Tests.Top level script execution.When no parameters are passed.Should call Show-Help function" time="0.1782" asserts="0" success="True" result="Success" executed="True" />
                     </results>
                   </test-suite>
                 </results>
               </test-suite>
-              <test-suite type="TestFixture" name="MyScript.ps1 Tests.Function calling" executed="True" result="Failure" success="False" time="8.1852" asserts="0" description="MyScript.ps1 Tests.Function calling">
+              <test-suite type="TestFixture" name="MyScript.ps1 Tests.Function calling" executed="True" result="Failure" success="False" time="49.1069" asserts="0" description="MyScript.ps1 Tests.Function calling">
                 <results>
-                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters" executed="True" result="Failure" success="False" time="0.8971" asserts="0" description="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters">
+                  <test-suite type="TestFixture" name="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters" executed="True" result="Failure" success="False" time="4.1978" asserts="0" description="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters">
                     <results>
-                      <test-case description="Should call Invoke-FunctionWithNoParameterswith with no parameters" name="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters.Should call Invoke-FunctionWithNoParameterswith with no parameters" time="0.8833" asserts="0" success="False" result="Failure" executed="True">
+                      <test-case description="Should call Invoke-FunctionWithNoParameterswith with no parameters" name="MyScript.ps1 Tests.Function calling.Invoke-FunctionWithNoParameters.Should call Invoke-FunctionWithNoParameterswith with no parameters" time="4.1597" asserts="0" success="False" result="Failure" executed="True">
                         <failure>
                           <message>CommandNotFoundException: The term 'Invoke-FunctionWithNoParameterswith' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.</message>
                           <stack-trace>at &lt;ScriptBlock&gt;, D:\Dropbox\Projects\HdT\PesterExample\tests\MyScript.Tests.ps1:57</stack-trace>
