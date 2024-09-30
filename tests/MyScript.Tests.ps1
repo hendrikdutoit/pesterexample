@@ -54,7 +54,7 @@ Describe "MyScript.ps1 Tests" {
             # }
             It "Should call Invoke-FunctionWithNoParameterswith with no parameters" {
                 . $PSScriptRoot\..\src\MyScript.ps1 -Var01 "TestValue"
-                $Result = Invoke-FunctionWithNoParameterswith
+                $Result = Invoke-FunctionWithNoParameters
                 $Result | Should -Be "Executing function: Invoke-FunctionWithNoParameters"
             }
         }
