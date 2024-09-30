@@ -1,3 +1,15 @@
+# Release 1.0.0
+
+- Cleanup ISSUE_TEMPLATES
+- Cleanup workflow
+- Cleanup pre-commit-config.yaml
+- Updated pyproject.toml with Poetry.
+- Removed (cleanup) requirements_docs.txt, GetEmoji.ps1 and GetPlanet.ps1.
+- Added examples for "function calling."
+- Added examples for "CLI."
+- Updated .gitignore
+-
+
 # Release 0.0.0
 
 ## General Changes
