@@ -9,6 +9,39 @@
     [Switch]$Pester
 )
 
+function DotSourceTest01 {
+    $s = "DotSourceTest01"
+    Write-Host $s
+    return $s
+}
+
+function DotSourceTest02 {
+    $s = "DotSourceTest02"
+    Write-Host $s
+    return $s
+}
+function DotSourceTest03 {
+    $s = "DotSourceTest03"
+    Write-Host $s
+    return $s
+}
+
+function Invoke-FunctionWithNoParameters {
+    $s = "Executing function: Invoke-FunctionWithNoParameters"
+    Write-Host $s
+    return $s
+}
+
+function Invoke-MyScript {
+    param (
+        [String]$Var
+    )
+    $Result = "Executing function: Invoke-MyScript with Var = $Var..."
+    Write-Host $Result
+    return $Result
+}
+
+
 function Show-Help {
     Write-Host $separator -ForegroundColor Cyan
 
@@ -25,13 +58,6 @@ function Show-Help {
 "@ | Write-Host
 
     Write-Host $separator -ForegroundColor Cyan
-}
-
-function Invoke-MyScript {
-    param (
-        [String]$Var
-    )
-    Write-Host "Executing function: Invoke-MyScript with Var = $Var..."
 }
 
 # Script execution starts here
