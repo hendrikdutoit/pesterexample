@@ -21,10 +21,6 @@ jobs:
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # GMAIL_USER: ${{ secrets.GMAIL_USER }}
-      # GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-      # RELEASE_EMAIL_USER: "dev-messenger@realtimeevents.co"
-      # RELEASE_EMAIL_PASSWORD: "e(6[ONOh{B7@"
 
     steps:
       - name: Check out repository
@@ -77,7 +73,7 @@ jobs:
           password: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
           subject: 'New Release: ${{ github.repository }} ${{ github.ref_name }}'
           to: rte-development@brightedge.co.za
-          from: Development Messenger
+          from: BEE Dev Messenger
           # body: Build job of ${{github.repository}} completed successfully!
           html_body: '		<table style="font-family: verdana;font-size:90%; border-collapse:collapse; border-style: double; border-color: 000000; border-width: 3px">
             <colgroup>
