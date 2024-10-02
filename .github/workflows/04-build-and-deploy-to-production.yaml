@@ -23,8 +23,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # GMAIL_USER: ${{ secrets.GMAIL_USER }}
       # GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-      RELEASE_EMAIL_USER: "dev-messenger@realtimeevents.co"
-      RELEASE_EMAIL_PASSWORD: "e(6[ONOh{B7@"
+      # RELEASE_EMAIL_USER: "dev-messenger@realtimeevents.co"
+      # RELEASE_EMAIL_PASSWORD: "e(6[ONOh{B7@"
 
     steps:
       - name: Check out repository
@@ -73,10 +73,8 @@ jobs:
         with:
           server_address: mail.realtimeevents.co
           server_port: 465
-          # username: ${{ secrets.GMAIL_USER }}
-          # password: ${{ secrets.GMAIL_APP_PASSWORD }}
-          username: ${{ env.RELEASE_EMAIL_USER }}
-          password: ${{ env.RELEASE_EMAIL_PASSWORD }}
+          username: ${{ secrets.RELEASE_EMAIL_USER }}
+          password: ${{ secrets.RELEASE_EMAIL_PASSWORD }}
           subject: 'New Release: ${{ github.repository }} ${{ github.ref_name }}'
           to: rte-development@brightedge.co.za
           from: Development Messenger
