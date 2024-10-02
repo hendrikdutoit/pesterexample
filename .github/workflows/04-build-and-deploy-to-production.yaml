@@ -23,8 +23,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # GMAIL_USER: ${{ secrets.GMAIL_USER }}
       # GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-      RELEASE_EMAIL_USER: dev-messenger@realtimeevents.co
-      RELEASE_EMAIL_PASSWORD: e(6[ONOh{B7@
+      RELEASE_EMAIL_USER: "dev-messenger@realtimeevents.co"
+      RELEASE_EMAIL_PASSWORD: "e(6[ONOh{B7@"
 
     steps:
       - name: Check out repository
