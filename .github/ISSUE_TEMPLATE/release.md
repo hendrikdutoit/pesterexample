@@ -21,7 +21,6 @@ labels:
 - [ ] Functions/methods/variables in modules are in alphabetical order (if possible).
 - [ ] Pre-Commit successful
 - [ ] CI successful
-- [ ] CodeCov above 99% or justifiably less
 - [ ] Badges are correct.
 - [ ] Changed current branch to `master`
 - [ ] Deleted the development branch

@@ -75,7 +75,7 @@ jobs:
           to: rte-development@brightedge.co.za
           from: BEE Dev Messenger
           # body: Build job of ${{github.repository}} completed successfully!
-          html_body: '		<table style="font-family: verdana;font-size:90%; border-collapse:collapse; border-style: double; border-color: 000000; border-width: 3px">
+          html_body: '<table style="font-family: verdana;font-size:90%; border-collapse:collapse; border-style: double; border-color: 000000; border-width: 3px">
             <colgroup>
               <col style="text-align:right">
               <col style="text-align:left">
@@ -104,7 +104,7 @@ jobs:
               <td style="text-align: right; border-right-style: solid; border-right-width: 1px">Release URL:</td>
               <td style="text-align: left; border-left-style: solid; border-left-width: 1px"><a href="https://github.com/${{ github.repository }}/releases/tag/${{github.ref_name}}">Click here</a></td>
             </tr>
-          </table><br>'
+            </table><br>'
           # cc: a@example.com,b@example.com
           # bcc: c@example.com,d@example.com
           # Optional recipient of the email response
