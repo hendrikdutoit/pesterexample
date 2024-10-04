@@ -1,3 +1,8 @@
+# Release 1.1.0
+
+- Add environment variable mocking example
+- Add setting up and breaking down a temporary directory before each test
+
 # Release 1.0.0
 
 - Cleanup ISSUE_TEMPLATES
@@ -8,7 +13,6 @@
 - Added examples for "function calling."
 - Added examples for "CLI."
 - Updated .gitignore
--
 
 # Release 0.0.0
 
