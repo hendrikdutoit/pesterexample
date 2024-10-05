@@ -23,4 +23,5 @@ labels:
 - [ ] CI successful
 - [ ] Badges are correct.
 - [ ] Changed current branch to `master`
-- [ ] Deleted the development branch
+- [ ] Pulled the new `master` branch
+- [ ] Deleted the development branches
