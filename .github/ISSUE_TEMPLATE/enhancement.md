@@ -16,6 +16,6 @@ assignees: ''
 
 - [ ] Commented GitHub Workflows scripts for testing purposes are restored.
 - [ ] CI successful.
-- [ ] CodeCov above 99% or justifiably less.
 - [ ] Changed current branch to `master`.
+- [ ] Pulled remote `master` into local `master`.
 - [ ] Deleted related development branches.
