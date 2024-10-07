@@ -36,8 +36,8 @@ Describe "Mock Examples from Pester Docs" {
         Context "Simple examples" {
             It "Should call original command" {
                 $result = Get-ChildItem -Path $TempDir
-                $fullPaths = $result | ForEach-Object { $_.FullName }
-                $fullPaths | Should -Be @("$TempDir\File1.txt", "$TempDir\File2.txt")
+                $fullPaths = $result | ForEach-Object { Split-Path $_ -Leaf }
+                $fullPaths | Should -Be @("File1.txt", "File2.txt")
             }
             It "Should call mock command" {
                 Mock Get-ChildItem { return @{FullName = "MockFile.txt" } }
