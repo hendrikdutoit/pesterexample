@@ -35,7 +35,7 @@ Describe "Mock Examples from Pester Docs" {
     Context "Get-ChildItem Example" {
         Context "Simple examples" {
             It "Should call original command" {
-                Get-ChildItem -Path $TempDir | Should -Be @("File1.txt", "File2.txt")
+                Get-ChildItem -Path $TempDir | Should -Be @("$TempDir\File1.txt", "$TempDir\File2.txt")
             }
             It "Should call mock command" {
                 Mock Get-ChildItem { return @{FullName = "MockFile.txt" } }
