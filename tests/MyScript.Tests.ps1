@@ -50,5 +50,37 @@ Describe "MyScript.ps1 Tests" {
             }
         }
     }
+    Context "Module Test" {
+        Context "Global Module Import" {
+            Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+            It "Test MyModule\Get-Hello" {
+                Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+            }
+        }
+        Context "BeforeAll Module Import" {
+            BeforeAll {
+                Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+                Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
+            }
+            It "Test MyModule\Get-Hello" {
+                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+            }
+            It "Test Another\Get-Hello" {
+                AnotherModule\Get-Hello | Should -Be "Hello from AnotherModule.psm1\Get-Hello"
+            }
+            It "Test both Get-Hello's" {
+                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                AnotherModule\Get-Hello | Should -Be "Hello from AnotherModule.psm1\Get-Hello"
+            }
+        }
+        Context "Inline Module Import" {
+            It "Test Get-Hello" {
+                Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+                Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+            }
+        }
+    }
 }
+
+
 

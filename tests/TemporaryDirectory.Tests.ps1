@@ -1,7 +1,7 @@
 ﻿Describe "Temporary Directory Tests" {
     BeforeEach {
         # Variables accessible within the Describe scope
-        $TempDir = Join-Path -Path $env:TEMP -ChildPath ([Guid]::NewGuid().ToString())
+        $TempDir = Join-Path -Path $env:TEMP -ChildPath ("PesterTest_" + [Guid]::NewGuid().ToString())
         # Create the temporary directory once before all tests
         New-Item -ItemType Directory -Path $TempDir | Out-Null
         Write-Host "Created $TempDir"
@@ -33,7 +33,7 @@
 Describe "Temporary Directory with Script Tests" {
     BeforeEach {
         # Create a temporary directory
-        $TempDir = Join-Path -Path $env:TEMP -ChildPath ([Guid]::NewGuid().ToString())
+        $TempDir = Join-Path -Path $env:TEMP -ChildPath ("PesterTest_" + [Guid]::NewGuid().ToString())
         New-Item -ItemType Directory -Path $TempDir | Out-Null
 
         # Create a script inside the temporary directory

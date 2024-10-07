@@ -9,6 +9,9 @@
     [Switch]$Pester
 )
 
+Import-Module "$PSScriptRoot\MyModule.psm1"
+Import-Module "$PSScriptRoot\AnotherModule.psm1"
+
 function DotSourceTest01 {
     $s = "DotSourceTest01"
     Write-Host $s
@@ -37,7 +40,7 @@ function Invoke-MyScript {
         [String]$Var
     )
     $Result = "Executing function: Invoke-MyScript with Var = $Var..."
-    Write-Host $Result
+    # Write-Host $Result
     return $Result
 }
 
@@ -73,7 +76,9 @@ if (-not $Pester) {
         Show-Help
     }
     else {
-        Invoke-MyScript -Var01 $Var01
+        Invoke-MyScript -Var $Var01
+        MyModule\Get-Hello
+        AnotherModule\Get-Hello
     }
     Write-Host '-[ END ]------------------------------------------------------------------------' -ForegroundColor Cyan
 }

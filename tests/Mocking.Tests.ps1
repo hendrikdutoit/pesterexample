@@ -16,36 +16,95 @@
     }
 }
 
-# Describe "Test with Mocked scrip call" {
-#     Mock {}
+# https://pester.dev/docs/commands/Mock
+Describe "Mock Examples from Pester Docs" {
+    BeforeAll {
+        function New-TempStructure {
+            param (
+                [Parameter(Mandatory = $true)]
+                [string]$Prefix
+            )
+            $TempDir = Join-Path -Path $env:TEMP -ChildPath ($Prefix + "_" + [Guid]::NewGuid().ToString())
+            New-Item -ItemType Directory -Path $TempDir | Out-Null
+            Set-Content -Path (Join-Path -Path $TempDir -ChildPath "File1.txt") -Value "File1.txt"
+            Set-Content -Path (Join-Path -Path $TempDir -ChildPath "File2.txt") -Value "File2.txt"
+            return $TempDir
+        }
+        $TempDir = New-TempStructure -Prefix "PesterExample"
+    }
+    Context "Get-ChildItem Example" {
+        Context "Simple examples" {
+            It "Should call original command" {
+                Get-ChildItem -Path $TempDir | Should -Be @("File1.txt", "File2.txt")
+            }
+            It "Should call mock command" {
+                Mock Get-ChildItem { return @{FullName = "MockFile.txt" } }
+                $result = Get-ChildItem -Path $TempDir
+                $result.FullName | Should -Be "MockFile.txt"
+            }
+        }
+        Context "ParameterFilter examples" {
+            Context "Single Mock Setup" {
+                BeforeAll {
+                    Mock Get-ChildItem { return @{FullName = "MockFile.txt" } } -ParameterFilter {
+                        $Path.StartsWith($env:TEMP + "\PesterExample")
+                    }
+                }
+                It "Should call original command" {
+                    $AlternativeDir = New-TempStructure -Prefix "Pester"
+                    $result = Get-ChildItem -Path $AlternativeDir
+                    $result.FullName | Should -Be @("$AlternativeDir\File1.txt", "$AlternativeDir\File2.txt")
+                    Remove-Item -Path $AlternativeDir -Recurse -Force
+                }
+                It "Should call mock command" {
+                    $result = Get-ChildItem -Path $TempDir
+                    $result.FullName | Should -Be "MockFile.txt"
+                }
+            }
+            Context "Multi Mock Setup" {
+                BeforeEach {
+                    $AlternativeDir = New-TempStructure -Prefix "Alternative"
+                    Mock Get-ChildItem { return @{FullName = "MockFile.txt" } } -ParameterFilter { $Path.StartsWith($env:TEMP + "\PesterExample") }
+                    Mock Get-ChildItem { return @{FullName = "Alternative.txt" } } -ParameterFilter { $Path.StartsWith($env:TEMP + "\Alternative") }
+                    $WrongDir = New-TempStructure -Prefix "Wrong"
+                }
+                It "Should call original command" {
+                    $result = Get-ChildItem -Path $WrongDir
+                    $result.FullName | Should -Be @("$WrongDir\File1.txt", "$WrongDir\File2.txt")
+                }
+                It "Should call mock command" {
+                    $result = Get-ChildItem -Path $TempDir
+                    $result.FullName | Should -Be "MockFile.txt"
+                }
+                It "Should call alternative mock command" {
+                    $result = Get-ChildItem -Path $AlternativeDir
+                    $result.FullName | Should -Be "Alternative.txt"
+                }
+                AfterEach {
+                    Remove-Item -Path $AlternativeDir -Recurse -Force
+                    Remove-Item -Path $WrongDir -Recurse -Force
+                }
+            }
+        }
+    }
+    AfterAll {
+        Remove-Item -Path $TempDir -Recurse -Force
+    }
+}
 
-#     # Mock for Join-Path to directly return the expected paths for simplicity in tracking
-#     Mock Join-Path {
-#         param($Path, $ChildPath)
-#         return "$Path\$ChildPath"
-#     }
-
-#     # Example test to verify that the function constructs paths correctly and calls the script as expected
-#     BeforeEach {
-#         $tempDir = Join-Path -Path $env:TEMP -ChildPath ([Guid]::NewGuid().ToString())
-#         New-Item -ItemType Directory -Path $tempDir | Out-Null
-#     }
-#     It "Calls the upgrade preparation script with correct parameters" {
-#         # Setup
-#         $upgradeScriptDir = "C:\FakeUpgrade"
-#         $env:VENVIT_DIR = "C:\Venvit"
-#         $expectedCurrentManifestPath = "C:\Venvit\Manifest.psd1"
-#         $expectedUpgradeManifestPath = "C:\FakeUpgrade\Manifest.psd1"
-
-#         # Act
-#         Invoke-ConcludeUpgradePrep -UpgradeScriptDir $upgradeScriptDir
-
-#         # Assert
-#         # Ensure the script file is called with the correct parameters
-#         Assert-MockCalled -CommandName -Exactly 1 -Scope It -ParameterFilter {
-#             $args[0] -eq "$upgradeScriptDir\Conclude-UpgradePrep.ps1" -and
-#             $args[1] -eq $expectedCurrentManifestPath -and
-#             $args[2] -eq $expectedUpgradeManifestPath
-#         }
-#     }
-# }
+Context "Mock Module Test" {
+    Context "BeforeAll Module Import" {
+        BeforeAll {
+            Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+            Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
+        }
+        It "Test MyModule\Get-Hello" {
+            Mock MyModule\Get-Hello { return "Mocked Get-Hello from MyModule" }
+            MyModule\Get-Hello | Should -Be "Mocked Get-Hello from MyModule"
+        }
+        It "Test AnotherModule\Get-Hello" {
+            Mock AnotherModule\Get-Hello { return "Mocked Get-Hello from AnotherModule" }
+            AnotherModule\Get-Hello | Should -Be "Mocked Get-Hello from AnotherModule"
+        }
+    }
+}
