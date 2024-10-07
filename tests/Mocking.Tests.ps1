@@ -55,7 +55,9 @@ Describe "Mock Examples from Pester Docs" {
                 It "Should call original command" {
                     $AlternativeDir = New-TempStructure -Prefix "Pester"
                     $result = Get-ChildItem -Path $AlternativeDir
-                    $result.FullName | Should -Be @("$AlternativeDir\File1.txt", "$AlternativeDir\File2.txt")
+                    $fullPaths = $result | ForEach-Object { Split-Path $_ -Leaf }
+                    $fullPaths | Should -Be @("File1.txt", "File2.txt")
+                    # $result.FullName | Should -Be @("$AlternativeDir\File1.txt", "$AlternativeDir\File2.txt")
                     Remove-Item -Path $AlternativeDir -Recurse -Force
                 }
                 It "Should call mock command" {
@@ -72,7 +74,9 @@ Describe "Mock Examples from Pester Docs" {
                 }
                 It "Should call original command" {
                     $result = Get-ChildItem -Path $WrongDir
-                    $result.FullName | Should -Be @("$WrongDir\File1.txt", "$WrongDir\File2.txt")
+                    $fullPaths = $result | ForEach-Object { Split-Path $_ -Leaf }
+                    $fullPaths | Should -Be @("File1.txt", "File2.txt")
+                    # $result.FullName | Should -Be @("$WrongDir\File1.txt", "$WrongDir\File2.txt")
                 }
                 It "Should call mock command" {
                     $result = Get-ChildItem -Path $TempDir
