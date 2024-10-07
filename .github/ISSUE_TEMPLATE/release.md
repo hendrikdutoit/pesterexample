@@ -15,13 +15,15 @@ labels:
 ## New Release Checks
 
 - [ ] Remove warnings, errors and spelling reported by IDE.
-- [ ] Update / remove ToDo's
+- [ ] Update / remove ToDo's.
+- [ ] Updated ReleaseNotes.md.
+- [ ] Updated version in pyproject.toml.
 - [ ] Commented code is not useful anymore are removed.
 - [ ] Commented GitHub Workflows scripts for testing purposes are restored.
 - [ ] Functions/methods/variables in modules are in alphabetical order (if possible).
-- [ ] Pre-Commit successful
-- [ ] CI successful
+- [ ] Pre-Commit successful.
+- [ ] CI successful.
 - [ ] Badges are correct.
-- [ ] Changed current branch to `master`
-- [ ] Pulled the new `master` branch
-- [ ] Deleted the development branches
+- [ ] Changed current branch to `master`.
+- [ ] Pulled the new `master` branch.
+- [ ] Deleted the development branches.

@@ -57,7 +57,6 @@ Describe "Mock Examples from Pester Docs" {
                     $result = Get-ChildItem -Path $AlternativeDir
                     $fullPaths = $result | ForEach-Object { Split-Path $_ -Leaf }
                     $fullPaths | Should -Be @("File1.txt", "File2.txt")
-                    # $result.FullName | Should -Be @("$AlternativeDir\File1.txt", "$AlternativeDir\File2.txt")
                     Remove-Item -Path $AlternativeDir -Recurse -Force
                 }
                 It "Should call mock command" {
@@ -76,7 +75,6 @@ Describe "Mock Examples from Pester Docs" {
                     $result = Get-ChildItem -Path $WrongDir
                     $fullPaths = $result | ForEach-Object { Split-Path $_ -Leaf }
                     $fullPaths | Should -Be @("File1.txt", "File2.txt")
-                    # $result.FullName | Should -Be @("$WrongDir\File1.txt", "$WrongDir\File2.txt")
                 }
                 It "Should call mock command" {
                     $result = Get-ChildItem -Path $TempDir

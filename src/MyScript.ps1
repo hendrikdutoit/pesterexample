@@ -40,7 +40,6 @@ function Invoke-MyScript {
         [String]$Var
     )
     $Result = "Executing function: Invoke-MyScript with Var = $Var..."
-    # Write-Host $Result
     return $Result
 }
 
