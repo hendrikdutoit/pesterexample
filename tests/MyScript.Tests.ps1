@@ -54,7 +54,7 @@ Describe "MyScript.ps1 Tests" {
         Context "Global Module Import" {
             Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
             It "Test MyModule\Get-Hello" {
-                Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
             }
         }
         Context "BeforeAll Module Import" {
