@@ -112,17 +112,17 @@ Context "Mock Module Tests" {
 }
 
 Context "Mock Parametrised" {
-    It "Call original cmdlet" {
+    It "Call original Invoke-WebRequest" {
         $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
         $Result = [System.Text.Encoding]::UTF8.GetString($Result.Content).Trim()
         $Result | Should -Be 'MyTest'
     }
-    It "Call mock cmdlet" {
+    It "Call mock Invoke-WebRequest" {
         Mock Invoke-WebRequest { 'MockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
         $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
         $Result | Should -Be 'MockTest'
     }
-    It "Call distinguished cmdlet" {
+    It "Call specific Invoke-WebRequest" {
         Mock Invoke-WebRequest { return 'AnotherMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt" }
         Mock Invoke-WebRequest { return 'MyMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
         $MyResult = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
