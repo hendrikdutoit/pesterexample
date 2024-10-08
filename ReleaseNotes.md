@@ -1,3 +1,10 @@
+# Release 1.3.0
+
+- Added AnotherTest.txt and Mytest.txt for testing purposes
+- Imporved grammar in test descriptions
+- Simplified "Mock Module Tests"
+- "Mock Parametrised" Tests
+
 # Release 1.2.0
 
 - Updated enhancement.md GitHub workflow.
