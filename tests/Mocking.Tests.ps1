@@ -1,4 +1,4 @@
-﻿Describe "Test with Mocked Environment Variable" {
+﻿Describe "Test with Mocked Environment Variables" {
     BeforeAll {
         # Save the current value to restore later
         $originalValue = $env:MY_VARIABLE
@@ -96,19 +96,38 @@ Describe "Mock Examples from Pester Docs" {
     }
 }
 
-Context "Mock Module Test" {
-    Context "BeforeAll Module Import" {
-        BeforeAll {
-            Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
-            Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
-        }
-        It "Test MyModule\Get-Hello" {
-            Mock MyModule\Get-Hello { return "Mocked Get-Hello from MyModule" }
-            MyModule\Get-Hello | Should -Be "Mocked Get-Hello from MyModule"
-        }
-        It "Test AnotherModule\Get-Hello" {
-            Mock AnotherModule\Get-Hello { return "Mocked Get-Hello from AnotherModule" }
-            AnotherModule\Get-Hello | Should -Be "Mocked Get-Hello from AnotherModule"
-        }
+Context "Mock Module Tests" {
+    BeforeAll {
+        Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+        Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
+    }
+    It "Test MyModule\Get-Hello" {
+        Mock MyModule\Get-Hello { return "Mocked Get-Hello from MyModule" }
+        MyModule\Get-Hello | Should -Be "Mocked Get-Hello from MyModule"
+    }
+    It "Test AnotherModule\Get-Hello" {
+        Mock AnotherModule\Get-Hello { return "Mocked Get-Hello from AnotherModule" }
+        AnotherModule\Get-Hello | Should -Be "Mocked Get-Hello from AnotherModule"
+    }
+}
+
+Context "Mock Parametrised" {
+    It "Call original cmdlet" {
+        $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
+        $Result = [System.Text.Encoding]::UTF8.GetString($Result.Content).Trim()
+        $Result | Should -Be 'MyTest'
+    }
+    It "Call mock cmdlet" {
+        Mock Invoke-WebRequest { 'MockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
+        $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
+        $Result | Should -Be 'MockTest'
+    }
+    It "Call distinguished cmdlet" {
+        Mock Invoke-WebRequest { return 'AnotherMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt" }
+        Mock Invoke-WebRequest { return 'MyMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
+        $MyResult = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
+        $AnotherResult = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt"
+        $MyResult | Should -Be 'MyMockTest'
+        $AnotherResult | Should -Be 'AnotherMockTest'
     }
 }
