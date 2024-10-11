@@ -1,5 +1,9 @@
 # Release 1.3.0
 
+- Add example to showcase mocing a function called by another funtion.
+
+# Release 1.3.0
+
 - Added AnotherTest.txt and Mytest.txt for testing purposes
 - Imporved grammar in test descriptions
 - Simplified "Mock Module Tests"
