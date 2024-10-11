@@ -54,7 +54,7 @@ Describe "MyScript.ps1 Tests" {
         Context "Global Module Import" {
             Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
             It "Test MyModule\Get-Hello" {
-                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                MyModule\Get-Hello | Should -Be @('Hello from MyModule.psm1\Get-Hello', 'Called by Get-Hello')
             }
         }
         Context "BeforeAll Module Import" {
@@ -63,20 +63,20 @@ Describe "MyScript.ps1 Tests" {
                 Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
             }
             It "Test MyModule\Get-Hello" {
-                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                MyModule\Get-Hello | Should -Be @('Hello from MyModule.psm1\Get-Hello', 'Called by Get-Hello')
             }
             It "Test Another\Get-Hello" {
                 AnotherModule\Get-Hello | Should -Be "Hello from AnotherModule.psm1\Get-Hello"
             }
             It "Test both Get-Hello's" {
-                MyModule\Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                MyModule\Get-Hello | Should -Be @('Hello from MyModule.psm1\Get-Hello', 'Called by Get-Hello')
                 AnotherModule\Get-Hello | Should -Be "Hello from AnotherModule.psm1\Get-Hello"
             }
         }
         Context "Inline Module Import" {
             It "Test Get-Hello" {
                 Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
-                Get-Hello | Should -Be "Hello from MyModule.psm1\Get-Hello"
+                Get-Hello | Should -Be @('Hello from MyModule.psm1\Get-Hello', 'Called by Get-Hello')
             }
         }
     }
