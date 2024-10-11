@@ -109,6 +109,16 @@ Context "Mock Module Tests" {
         Mock AnotherModule\Get-Hello { return "Mocked Get-Hello from AnotherModule" }
         AnotherModule\Get-Hello | Should -Be "Mocked Get-Hello from AnotherModule"
     }
+    It "Test Invoke-CalledFunction" {
+        Mock -ModuleName MyModule -CommandName Invoke-CalledFunction { Write-Output "Mocked call to Invoke-CalledFunction" }
+
+        $Output = MyModule\Get-Hello
+
+        $Output[0] | Should -Be "Hello from MyModule.psm1\Get-Hello"
+        $Output[1] | Should -Be "Mocked call to Invoke-CalledFunction"
+        Assert-MockCalled -Scope It -ModuleName MyModule -CommandName Invoke-CalledFunction -Times 1 -Exactly
+
+    }
 }
 
 Context "Mock Parametrised" {
@@ -131,3 +141,4 @@ Context "Mock Parametrised" {
         $AnotherResult | Should -Be 'AnotherMockTest'
     }
 }
+
