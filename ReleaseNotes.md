@@ -1,4 +1,8 @@
-# Release 1.3.0
+# Release 1.5.0
+
+- Update parametrised mocking to include input from console "Read-Host" examples.
+
+# Release 1.4.0
 
 - Add example to showcase mocing a function called by another funtion.
 

@@ -98,6 +98,8 @@ Describe "Mock Examples from Pester Docs" {
 
 Context "Mock Module Tests" {
     BeforeAll {
+        if (Get-Module -Name "MyModule") { Remove-Module -Name "MyModule" }
+        if (Get-Module -Name "AnotherModule") { Remove-Module -Name "AnotherModule" }
         Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
         Import-Module "$PSScriptRoot\..\src\AnotherModule.psm1"
     }
@@ -117,7 +119,6 @@ Context "Mock Module Tests" {
         $Output[0] | Should -Be "Hello from MyModule.psm1\Get-Hello"
         $Output[1] | Should -Be "Mocked call to Invoke-CalledFunction"
         Assert-MockCalled -Scope It -ModuleName MyModule -CommandName Invoke-CalledFunction -Times 1 -Exactly
-
     }
 }
 
@@ -125,20 +126,60 @@ Context "Mock Parametrised" {
     It "Call original Invoke-WebRequest" {
         $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
         $Result = [System.Text.Encoding]::UTF8.GetString($Result.Content).Trim()
-        $Result | Should -Be 'MyTest'
+        $Result | Should -Be "MyTest"
     }
     It "Call mock Invoke-WebRequest" {
-        Mock Invoke-WebRequest { 'MockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
+        Mock Invoke-WebRequest { "MockTest" } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
         $Result = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
-        $Result | Should -Be 'MockTest'
+        $Result | Should -Be "MockTest"
     }
     It "Call specific Invoke-WebRequest" {
-        Mock Invoke-WebRequest { return 'AnotherMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt" }
-        Mock Invoke-WebRequest { return 'MyMockTest' } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
+        Mock Invoke-WebRequest { return "AnotherMockTest" } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt" }
+        Mock Invoke-WebRequest { return "MyMockTest" } -ParameterFilter { $Uri -eq "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt" }
         $MyResult = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/MyTest.txt"
         $AnotherResult = Invoke-WebRequest "https://github.com/hendrikdutoit/PesterExample/releases/download/1.2.0/AnotherTest.txt"
         $MyResult | Should -Be 'MyMockTest'
         $AnotherResult | Should -Be 'AnotherMockTest'
+    }
+    Context "Handle console input" {
+        Context "Local Call"{
+            It "Single Read-Host" {
+                Mock Read-Host { "Mocked input from the console" } -ParameterFilter { $Prompt -eq "Console input" }
+                $Result = Read-Host -Prompt "Console input"
+                $Result | Should -Be "Mocked input from the console"
+            }
+            It "For loop Read-Host" {
+                Mock Read-Host {
+                    return "Expected1"
+                } -ParameterFilter { $Prompt -eq "Prompt1 for value" }
+                Mock Read-Host {
+                    return "Expected2"
+                } -ParameterFilter { $Prompt -eq "Prompt2 for value" }
+
+                $variableSet = @(
+                    @("Prompt1", "Expected1"),
+                    @("Prompt2", "Expected2")
+                )
+                foreach ($variable in $variableSet) {
+                    $prompt = $variable[0] + " for value"
+                    $MyResult = Read-Host -Prompt $prompt
+                    $MyResult | Should -Be $variable[1]
+                }
+            }
+        }
+        Context "Function Call" {
+            BeforeAll {
+                if (Get-Module -Name "MyModule") { Remove-Module -Name "MyModule" }
+                Import-Module "$PSScriptRoot\..\src\MyModule.psm1"
+                Mock -ModuleName MyModule Read-Host {
+                    return "Mocked input from the console"
+                } -ParameterFilter { $Prompt -eq "Console input" }
+            }
+            It "Single Read-Host" {
+                $Result = Get-ConsoleInput -textPrompt "Console input"
+                $Result | Should -Be "Mocked input from the console"
+            }
+        }
     }
 }
 
