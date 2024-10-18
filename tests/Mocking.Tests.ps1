@@ -119,7 +119,6 @@ Context "Mock Module Tests" {
         $Output[0] | Should -Be "Hello from MyModule.psm1\Get-Hello"
         $Output[1] | Should -Be "Mocked call to Invoke-CalledFunction"
         Assert-MockCalled -Scope It -ModuleName MyModule -CommandName Invoke-CalledFunction -Times 1 -Exactly
-
     }
 }
 
