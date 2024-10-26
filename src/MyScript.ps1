@@ -1,4 +1,5 @@
-﻿param (
+﻿# MySript.ps1
+param (
     [Parameter(Mandatory = $false, Position = 0)]
     [string]$Var01,
 
@@ -29,6 +30,19 @@ function DotSourceTest03 {
     return $s
 }
 
+function Invoke-Script {
+    param ([string]$ScriptPath)
+    & $ScriptPath
+}
+
+function Invoke-AnotherScriptVer1 {
+    . "$PSScriptRoot\..\src\AnotherScript.ps1"
+    Invoke-AnotherScriptFunction
+}
+
+function Invoke-AnotherScriptVer2 {
+    Invoke-Script "$PSScriptRoot\..\src\AnotherScript.ps1"
+}
 function Invoke-FunctionWithNoParameters {
     $s = "Executing function: Invoke-FunctionWithNoParameters"
     Write-Host $s
