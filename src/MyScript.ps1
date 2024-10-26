@@ -31,7 +31,9 @@ function DotSourceTest03 {
 }
 
 function Invoke-Script {
-    param ([string]$ScriptPath)
+    param (
+        [string]$ScriptPath
+    )
     & $ScriptPath
 }
 

@@ -220,11 +220,14 @@ Describe "Mock Scripts" {
     Context "Abstracting Script Execution to a Wrapper Function" {
         BeforeAll {
             . $PSScriptRoot\..\src\MyScript.ps1 -Pester
+            Mock Invoke-Script {
+                "Mock: Invoke-AnotherScriptFunction called"
+            } -ParameterFilter {
+                "$PSScriptRoot\..\src\AnotherScript.ps1"
+            }
         }
 
-        It "Calls the script function which is mocked" {
-            Mock Invoke-Script { "Mock: Invoke-AnotherScriptFunction called" }
-
+        It "Calls the wrapper function which is mocked" {
             $result = Invoke-AnotherScriptVer2
             $result | Should -Be "Mock: Invoke-AnotherScriptFunction called"
         }
