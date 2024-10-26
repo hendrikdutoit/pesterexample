@@ -183,3 +183,54 @@ Context "Mock Parametrised" {
     }
 }
 
+# To mock the execution of an external PowerShell script called from within your
+# function (Invoke-AnotherFunction), you need to employ a strategy that allows
+# you to replace the behavior of the script invocation with something controllable
+# in your tests. Because the script invocation itself
+# (& $PSScriptRoot\..\src\AnotherScript.ps1) is not a function or cmdlet, but a
+# direct script execution, you can't directly mock it using Pester's built-in
+# Mock function.
+# Instead,you'll have to refactor the original PowerShell script for better
+# testability or use a technique to intercept the script call. Here are two
+# common strategies:
+# 1. Refactoring the Function for Testability
+# Refactoring the Invoke-AnotherFunction to call a PowerShell function instead
+# of directly executing a script file can make your code more testable. For
+# instance, you could wrap the script's functionality into a function within
+# that script or a module, which you can then call from Invoke-AnotherFunction.
+# 2. Abstracting Script Execution to a Wrapper Function
+# If refactoring the called script isn't an option, another approach is to
+# abstract the execution of external scripts into a separate wrapper function
+# that you can then mock.
+Describe "Mock Scripts" {
+    Context "Refactoring the Function for Testability" {
+        BeforeAll {
+            . $PSScriptRoot\..\src\MyScript.ps1 -Pester
+            . $PSScriptRoot\..\src\AnotherScript.ps1
+        }
+
+        It "Calls the script function which is mocked" {
+            Mock Invoke-AnotherScriptFunction { "Mock: Invoke-AnotherScriptFunction called" }
+
+            $result = Invoke-AnotherScriptVer1
+            $result | Should -Be @('Mock: Invoke-AnotherScriptFunction called', 'Mock: Invoke-AnotherScriptFunction called')
+        }
+    }
+
+    Context "Abstracting Script Execution to a Wrapper Function" {
+        BeforeAll {
+            . $PSScriptRoot\..\src\MyScript.ps1 -Pester
+            Mock Invoke-Script {
+                "Mock: Invoke-AnotherScriptFunction called"
+            } -ParameterFilter {
+                "$PSScriptRoot\..\src\AnotherScript.ps1"
+            }
+        }
+
+        It "Calls the wrapper function which is mocked" {
+            $result = Invoke-AnotherScriptVer2
+            $result | Should -Be "Mock: Invoke-AnotherScriptFunction called"
+        }
+    }
+}
+

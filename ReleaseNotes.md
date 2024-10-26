@@ -1,3 +1,7 @@
+# Release 1.6.0
+
+- Add example to showcase how to mock the execution of an external PowerShell script called from within your function.
+
 # Release 1.5.0
 
 - Update parametrised mocking to include input from console "Read-Host" examples.
