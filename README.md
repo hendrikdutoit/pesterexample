@@ -38,7 +38,7 @@ Sandbox environment for experimenting with PowerShell and Pester.
 
    - Refactoring the Function for Testability
 
-     Refactoring the Invoke-AnotherFunction to call a PowerShell function instead of directly executing a script file can make your code more testable. For instance, you could wrap the script's functionality into a function within that script or a module,  which you can then call from Invoke-AnotherFunction.
+     Refactoring the Invoke-AnotherFunction to call a PowerShell function instead of directly executing a script file can make your code more testable. For instance, you could wrap the script's functionality into a function within that script or a module, which you can then call from Invoke-AnotherFunction.
 
    - Abstracting Script Execution to a Wrapper Function
 
